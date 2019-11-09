@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public  int timeCount = 5;
+    public  int timeCount = 60;
+    public GameObject winR, winL, score;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,15 @@ public class Timer : MonoBehaviour
         }
         if (timeCount == 0){
             this.GetComponent<Text>().text = "OVER";
+            Invoke("GameOver",2f);
+        }
+    }
+    void GameOver(){
+        if(score.GetComponent<ScoreBar>().scoreA >= score.GetComponent<ScoreBar>().scoreB){
+            winL.SetActive(true);
+        }
+        if(score.GetComponent<ScoreBar>().scoreB > score.GetComponent<ScoreBar>().scoreA){
+            winR.SetActive(true);
         }
     }
 }

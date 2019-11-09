@@ -12,8 +12,8 @@ public class ScoreBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        scoreA = 30;
-        scoreB = 30;
+        scoreA = 10;
+        scoreB = 10;
         scoreBar = this.GetComponent<Image>();
         position = wave.transform.position;
     }
@@ -22,9 +22,9 @@ public class ScoreBar : MonoBehaviour
     void Update()
     {
         scoreBar.fillAmount = scoreA / (scoreB+scoreA);
-        position.x = scoreBar.fillAmount;
-        position.x *=1170;
-        position.x +=335f;
+        position.x = scoreBar.fillAmount *1170 + 335;
         wave.transform.position = position;
+        if(scoreA<=0)scoreA = 0;
+        if(scoreB<=0)scoreB = 0;
     }
 }

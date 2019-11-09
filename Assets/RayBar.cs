@@ -5,16 +5,22 @@ using UnityEngine;
 public class RayBar : MonoBehaviour
 {
     public bool stopRay = false;
+    public GameObject timer, amiRay;
+    public Transform posPlayer, posTA;
+    public float taDistance;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        taDistance = Vector2.Distance( posTA.position, posPlayer.position );
+        if(timer.GetComponent<Timer>().timeCount == 0){
+            stopRay = true;
+        }
     }
     /// <summary>
     /// Sent each frame where a collider on another object is touching
@@ -23,9 +29,12 @@ public class RayBar : MonoBehaviour
     /// <param name="other">The Collision2D data associated with this collision.</param>
     public void OnTriggerStay2D(Collider2D other)
     {
-        if(other.CompareTag("ClassMates")){
+        // if(!other.CompareTag("TA")){
             stopRay = true;
-        }
+        // }
+            if(other.CompareTag("TA")){
+                amiRay.GetComponent<_aimRayManager>().i = taDistance*.2f;
+            }
     }
     public void OnTriggerExit2D(Collider2D other) {
         stopRay = false;

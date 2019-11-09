@@ -5,7 +5,7 @@ using UnityEngine;
 public class _aimRayManager : MonoBehaviour
 {
     public GameObject raybar;
-    float i; 
+    public float i; 
     bool stop;
     // Start is called before the first frame update
     void Start()
@@ -17,7 +17,9 @@ public class _aimRayManager : MonoBehaviour
     void Update()
     {
        stop = raybar.GetComponent<RayBar>().stopRay;
-
+        if(i == 0){
+            stop = false;
+        }
         
     }
     public float aimRayManager(float angle){
@@ -25,8 +27,9 @@ public class _aimRayManager : MonoBehaviour
         i += 0.04f;
         this.transform.rotation = Quaternion.Euler(0.0f , 0.0f , angle);
         raybar.transform.rotation = Quaternion.Euler(0.0f , 0.0f , angle);
-        raybar.transform.localScale = new Vector2(i , 0.05f);
+        
         }
+        raybar.transform.localScale = new Vector2(i , 0.05f);
         return i;
     }
     public float reduceScale(float i_x){

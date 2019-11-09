@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ChessPlane
   - ClassMates
+  - P1Ray
+  - P2Ray
+  - TA
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,7 @@ public class Classmate : MonoBehaviour
     public MateStatus mateState;
     float seconds;
     int timeRamdon;
+    public GameObject score;
 
     void Start()
     {
@@ -67,7 +68,7 @@ public class Classmate : MonoBehaviour
     //扣分狀態
     IEnumerator BlackState()
     {
-        seconds = Random.Range(7f, 12f);
+        seconds = Random.Range(6f, 10f);
         mateState = MateStatus.Black;
         this.GetComponent<BoxCollider2D>().enabled = true;
         this.GetComponent<SpriteRenderer>().color = colors[2];
@@ -79,7 +80,26 @@ public class Classmate : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("A");
+        if(other.CompareTag("P1Ray")){
+            if (mateState == MateStatus.Yellow)
+            {
+                score.GetComponent<ScoreBar>().scoreA +=.6f;
+            }if (mateState == MateStatus.Black)
+            {
+                score.GetComponent<ScoreBar>().scoreA -=1.5f;
+            }
+        }
+        if(other.CompareTag("P2Ray")){
+            if (mateState == MateStatus.Yellow)
+            {
+                score.GetComponent<ScoreBar>().scoreA +=.6f;
+            }if (mateState == MateStatus.Black)
+            {
+                score.GetComponent<ScoreBar>().scoreA -=1.5f;
+            }
+            
+        }
     }
+    
     
 }
