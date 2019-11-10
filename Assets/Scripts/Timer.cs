@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -38,5 +39,9 @@ public class Timer : MonoBehaviour
         if(score.GetComponent<ScoreBar>().scoreB > score.GetComponent<ScoreBar>().scoreA){
             winR.SetActive(true);
         }
+        Invoke("BackToMenu",5f);
+    }
+    void BackToMenu(){
+        SceneManager.LoadScene(0);
     }
 }

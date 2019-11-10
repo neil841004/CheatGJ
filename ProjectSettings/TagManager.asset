@@ -10,6 +10,7 @@ TagManager:
   - P2Ray
   - TA
   - Time
+  - SE
   layers:
   - Default
   - TransparentFX

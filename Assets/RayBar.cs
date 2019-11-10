@@ -42,5 +42,9 @@ public class RayBar : MonoBehaviour
     }
     public void OnTriggerExit2D(Collider2D other) {
         stopRay = false;
+        if(other.CompareTag("ClassMates")){
+        other.GetComponent<Classmate>().effect.SetActive(false);
+        other.GetComponent<Classmate>().effectB.SetActive(false);
+        }
     }
 }

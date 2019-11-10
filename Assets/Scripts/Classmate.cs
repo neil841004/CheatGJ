@@ -15,8 +15,9 @@ public class Classmate : MonoBehaviour
     float seconds;
     int timeRamdon;
     public GameObject score;
-    public GameObject desk, lightA;
-    public Sprite deskY,deskB,deskG,deskP;
+    public GameObject desk, lightA,effect,effectB;
+public Sprite deskY,deskB,deskG,deskP;
+
     public float scoreT = 0.6f;
 
     void Start()
@@ -95,25 +96,31 @@ public class Classmate : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+
         if(other.CompareTag("P1Ray")){
             if (mateState == MateStatus.Yellow)
             {
                 score.GetComponent<ScoreBar>().scoreA +=scoreT;
+                effect.SetActive(true);
             }if (mateState == MateStatus.Black)
             {
                 score.GetComponent<ScoreBar>().scoreA -=scoreT*2.2f;
+                effectB.SetActive(true);
             }
         }
         if(other.CompareTag("P2Ray")){
             if (mateState == MateStatus.Yellow)
             {
                 score.GetComponent<ScoreBar>().scoreB +=scoreT;
+                effect.SetActive(true);
             }if (mateState == MateStatus.Black)
             {
                 score.GetComponent<ScoreBar>().scoreB -=scoreT*2.2f;
+                effectB.SetActive(true);
             }
             
         }
+        
     }
     
     
