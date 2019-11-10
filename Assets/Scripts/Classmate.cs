@@ -92,10 +92,10 @@ public class Classmate : MonoBehaviour
         if(other.CompareTag("P2Ray")){
             if (mateState == MateStatus.Yellow)
             {
-                score.GetComponent<ScoreBar>().scoreA +=.6f;
+                score.GetComponent<ScoreBar>().scoreB +=.6f;
             }if (mateState == MateStatus.Black)
             {
-                score.GetComponent<ScoreBar>().scoreA -=1.5f;
+                score.GetComponent<ScoreBar>().scoreB -=1.5f;
             }
             
         }
