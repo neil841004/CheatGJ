@@ -402,7 +402,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &84099903 stripped
 Transform:
@@ -1341,7 +1341,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402530355
 GameObject:
@@ -2496,7 +2496,7 @@ Transform:
   - {fileID: 738460551}
   - {fileID: 1146930042}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &714123467 stripped
 GameObject:
@@ -2570,7 +2570,7 @@ MonoBehaviour:
   se:
   - {fileID: 8300000, guid: 31d142ea4e7c44e9d993b0f0c9f56778, type: 3}
   - {fileID: 8300000, guid: 8f07045fd00544d7088d8af311093da7, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 10a0bfd54d89746429d16436a209e651, type: 3}
 --- !u!82 &738460553
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4004,9 +4004,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1146930042}
   - component: {fileID: 1146930043}
+  - component: {fileID: 1146930044}
   m_Layer: 0
   m_Name: BGM
-  m_TagString: Untagged
+  m_TagString: BGM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4121,6 +4122,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1146930044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146930041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 127cb4602e5e748a28586f3e3ba8d30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  end: {fileID: 8300000, guid: eef50d264799146349a7fd99a17676b8, type: 3}
 --- !u!1 &1160457747
 GameObject:
   m_ObjectHideFlags: 0

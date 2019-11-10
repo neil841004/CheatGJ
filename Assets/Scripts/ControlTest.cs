@@ -65,19 +65,22 @@ public class ControlTest : MonoBehaviour
         }
         else if (((AimX == 0 && AimY > 0) || (AimX < 0 && AimY > 0) || (AimY == 0 && AimX < 0)) && canRotation && bool_canShoot && playerID == 1)
         {
-            
+
             angle = Mathf.Atan2(AimY, AimX) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
         }
-
+        if (player.GetButtonDown("Shoot") && bool_canShoot)
+        {
+            GameObject.FindWithTag("SE").SendMessage("PlaySE", 2);
+        }
         if (player.GetButton("Shoot") && bool_canShoot)
         {
-           
-        
+
+
             canShoot = aimIcon.GetComponent<_aimRayManager>().aimRayManager(angle);
             canRotation = false;
         }
-        else if(!player.GetButton("Shoot"))
+        else if (!player.GetButton("Shoot"))
         {
             if (canShoot > 0) bool_canShoot = false;
             // aimIcon.SendMessage("reduceScale", i_x);

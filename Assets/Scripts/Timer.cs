@@ -39,9 +39,11 @@ public class Timer : MonoBehaviour
         if(score.GetComponent<ScoreBar>().scoreB > score.GetComponent<ScoreBar>().scoreA){
             winR.SetActive(true);
         }
+        GameObject.FindWithTag("BGM").SendMessage("CM");
         Invoke("BackToMenu",5f);
     }
     void BackToMenu(){
         SceneManager.LoadScene(0);
+        
     }
 }

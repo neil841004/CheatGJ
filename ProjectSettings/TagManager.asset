@@ -11,6 +11,7 @@ TagManager:
   - TA
   - Time
   - SE
+  - BGM
   layers:
   - Default
   - TransparentFX
