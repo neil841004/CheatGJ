@@ -1579,6 +1579,11 @@ PrefabInstance:
       propertyPath: _userData.joystickMapIdCounter
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1261212278032673709, guid: a3ab3cd7ed4b9474ca4dca1856822c30,
+        type: 3}
+      propertyPath: _dontDestroyOnLoad
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ab3cd7ed4b9474ca4dca1856822c30, type: 3}
 --- !u!4 &545138297 stripped
