@@ -13,6 +13,7 @@ public class ControlTest : MonoBehaviour
     float angle, canShoot;
     bool canRotation, bool_canShoot;
     Player player;
+    float current_X, current_Y;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,14 @@ public class ControlTest : MonoBehaviour
     {
         float AimX = player.GetAxis("AimHorizontal");
         float AimY = player.GetAxis("AimVertical");
-
+        if (AimX != 0)
+        {
+            current_X = AimX;
+        }
+        if (AimY != 0)
+        {
+            current_Y = AimY;
+        }
         // Debug.Log("X=");
         // Debug.Log(AimX);
         // Debug.Log("Y=");
@@ -39,29 +47,37 @@ public class ControlTest : MonoBehaviour
         if (AimX == 0 && AimY == 0)
         {
 
-            aimIcon.SendMessage("reduceScale", i_x);
+            //aimIcon.SendMessage("reduceScale", i_x);
             // Debug.Log(AimX);
         }
         else if (((AimX == 0 && AimY > 0) || (AimX > 0 && AimY > 0) || (AimY == 0 && AimX > 0)) && canRotation && bool_canShoot && playerID == 0)
         {
 
             //aimIcon.transform.position = new Vector3(AimX, AimY, 0.0f);
+            // if (AimX == 0 && AimY == 0)
+            // {
+            //     angle = Mathf.Atan2(current_Y, current_X) * Mathf.Rad2Deg;
+            //     this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
+            // }
             angle = Mathf.Atan2(AimY, AimX) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
 
         }
-        else if(((AimX == 0 && AimY > 0) || (AimX < 0 && AimY > 0) || (AimY == 0 && AimX < 0)) && canRotation && bool_canShoot && playerID == 1){
+        else if (((AimX == 0 && AimY > 0) || (AimX < 0 && AimY > 0) || (AimY == 0 && AimX < 0)) && canRotation && bool_canShoot && playerID == 1)
+        {
+            
             angle = Mathf.Atan2(AimY, AimX) * Mathf.Rad2Deg;
             this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
         }
 
         if (player.GetButton("Shoot") && bool_canShoot)
         {
-
+           
+        
             canShoot = aimIcon.GetComponent<_aimRayManager>().aimRayManager(angle);
             canRotation = false;
         }
-        else
+        else if(!player.GetButton("Shoot"))
         {
             if (canShoot > 0) bool_canShoot = false;
             // aimIcon.SendMessage("reduceScale", i_x);

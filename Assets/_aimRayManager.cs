@@ -29,6 +29,7 @@ public class _aimRayManager : MonoBehaviour
         raybar.transform.rotation = Quaternion.Euler(0.0f , 0.0f , angle);
         
         }
+        
         raybar.transform.localScale = new Vector2(i , 0.05f);
         return i;
     }
