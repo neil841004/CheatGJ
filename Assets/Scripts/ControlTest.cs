@@ -77,11 +77,7 @@ public class ControlTest : MonoBehaviour
             canShoot = aimIcon.GetComponent<_aimRayManager>().aimRayManager(angle);
             canRotation = false;
         }
-<<<<<<< Updated upstream
         else if(!player.GetButton("Shoot"))
-=======
-        else if (!player.GetButton("Shoot"))
->>>>>>> Stashed changes
         {
             if (canShoot > 0) bool_canShoot = false;
             // aimIcon.SendMessage("reduceScale", i_x);
