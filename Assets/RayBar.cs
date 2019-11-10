@@ -7,7 +7,7 @@ public class RayBar : MonoBehaviour
     public bool stopRay = false;
     public GameObject timer, amiRay;
     public Transform posPlayer, posTA;
-    public float taDistance;
+    public float taDistance, mDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,10 @@ public class RayBar : MonoBehaviour
             if(other.CompareTag("TA")){
                 amiRay.GetComponent<_aimRayManager>().i = taDistance*.2f;
             }
+            // if(other.CompareTag("ClassMates")){
+            //     mDistance = Vector2.Distance( other.transform.position,posPlayer.position);
+            //     amiRay.GetComponent<_aimRayManager>().i = taDistance*.2f;
+            // }
     }
     public void OnTriggerExit2D(Collider2D other) {
         stopRay = false;

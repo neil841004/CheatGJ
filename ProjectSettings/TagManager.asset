@@ -9,6 +9,7 @@ TagManager:
   - P1Ray
   - P2Ray
   - TA
+  - Time
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: animal
     uniqueID: 2894893729
+    locked: 0
+  - name: light
+    uniqueID: 2035214327
     locked: 0
   - name: RayBar
     uniqueID: 2613500013

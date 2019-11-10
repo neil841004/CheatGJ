@@ -24,13 +24,13 @@ public class TeachingAssistant : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sortingOrder = 0;
         }
         if(taY<1.48f && taY>-0.19){
-            this.GetComponent<SpriteRenderer>().sortingOrder = 2;
+            this.GetComponent<SpriteRenderer>().sortingOrder = 3;
         }if(taY<-0.19f && taY>-2.03){
-            this.GetComponent<SpriteRenderer>().sortingOrder = 4;
-        }if(taY<-2.03f && taY>-3.76){
             this.GetComponent<SpriteRenderer>().sortingOrder = 6;
+        }if(taY<-2.03f && taY>-3.76){
+            this.GetComponent<SpriteRenderer>().sortingOrder = 9;
         }if(taY<-3.76f){
-            this.GetComponent<SpriteRenderer>().sortingOrder = 8;
+            this.GetComponent<SpriteRenderer>().sortingOrder = 12;
         }
         if(t == 0){
             this.GetComponent<Animator>().enabled = false;
