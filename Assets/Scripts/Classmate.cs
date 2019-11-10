@@ -9,17 +9,20 @@ public class Classmate : MonoBehaviour
         Gray, //一般狀態
         Yellow, //發光狀態
         Black, //扣分狀態
+        Hand,
     }
-    public Color[] colors;
     public MateStatus mateState;
     float seconds;
     int timeRamdon;
     public GameObject score;
+    public GameObject desk, lightA;
+    public Sprite deskY,deskB,deskG,deskP;
+    public float scoreT = 0.6f;
 
     void Start()
     {
-        this.GetComponent<SpriteRenderer>().color = colors[0];
         timeRamdon = Random.Range(0,150);
+        desk.GetComponent<SpriteRenderer>().sprite = deskG;
         
     }
 
@@ -32,6 +35,12 @@ public class Classmate : MonoBehaviour
                 ChangeState();
                 GameManager.time++;
             }
+        }
+        if(GameObject.FindWithTag("Time").GetComponent<Timer>().timeCount <= 40 && GameObject.FindWithTag("Time").GetComponent<Timer>().timeCount > 20){
+            scoreT = .8f;
+        }
+        if(GameObject.FindWithTag("Time").GetComponent<Timer>().timeCount <= 20){
+            scoreT = 1.2f;
         }
     }
     void ChangeState()
@@ -55,27 +64,33 @@ public class Classmate : MonoBehaviour
     //加分狀態
     IEnumerator YellowState()
     {
+        lightA.SetActive(true);
+        yield return new WaitForSeconds(.7f);
         seconds = Random.Range(7f, 12f);
         mateState = MateStatus.Yellow;
+        desk.GetComponent<SpriteRenderer>().sprite = deskY;
         this.GetComponent<BoxCollider2D>().enabled = true;
-        this.GetComponent<SpriteRenderer>().color = colors[1];
         yield return new WaitForSeconds(seconds);
         mateState = MateStatus.Gray;
+        lightA.SetActive(false);
+        desk.GetComponent<SpriteRenderer>().sprite = deskG;
         this.GetComponent<BoxCollider2D>().enabled = false;
-        this.GetComponent<SpriteRenderer>().color = colors[0];
     }
 
     //扣分狀態
     IEnumerator BlackState()
     {
+        lightA.SetActive(true);
+        yield return new WaitForSeconds(.7f);
         seconds = Random.Range(6f, 10f);
         mateState = MateStatus.Black;
+        desk.GetComponent<SpriteRenderer>().sprite = deskB;
         this.GetComponent<BoxCollider2D>().enabled = true;
-        this.GetComponent<SpriteRenderer>().color = colors[2];
         yield return new WaitForSeconds(seconds);
+        lightA.SetActive(false);
+        desk.GetComponent<SpriteRenderer>().sprite = deskG;
         mateState = MateStatus.Gray;
         this.GetComponent<BoxCollider2D>().enabled = false;
-        this.GetComponent<SpriteRenderer>().color = colors[0];
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -83,19 +98,19 @@ public class Classmate : MonoBehaviour
         if(other.CompareTag("P1Ray")){
             if (mateState == MateStatus.Yellow)
             {
-                score.GetComponent<ScoreBar>().scoreA +=.6f;
+                score.GetComponent<ScoreBar>().scoreA +=scoreT;
             }if (mateState == MateStatus.Black)
             {
-                score.GetComponent<ScoreBar>().scoreA -=1.5f;
+                score.GetComponent<ScoreBar>().scoreA -=scoreT*2.2f;
             }
         }
         if(other.CompareTag("P2Ray")){
             if (mateState == MateStatus.Yellow)
             {
-                score.GetComponent<ScoreBar>().scoreB +=.6f;
+                score.GetComponent<ScoreBar>().scoreB +=scoreT;
             }if (mateState == MateStatus.Black)
             {
-                score.GetComponent<ScoreBar>().scoreB -=1.5f;
+                score.GetComponent<ScoreBar>().scoreB -=scoreT*2.2f;
             }
             
         }
